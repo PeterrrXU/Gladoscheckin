@@ -3,16 +3,17 @@ name: auto check
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths-ignore:
       - 'README.md'
       - 'imgs/**'
   schedule:
-    - cron: '0 4,10 * * *'
+    # UTC 00:40 = 北京时间每天 08:40
+    - cron: '40 0 * * *'
 
 jobs:
   build:
-    name: glados/railgun checkin
+    name: glados checkin
     runs-on: ubuntu-latest
       
     permissions:
