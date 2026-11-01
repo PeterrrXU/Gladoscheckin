@@ -8,8 +8,12 @@ on:
       - 'README.md'
       - 'imgs/**'
   schedule:
-    # UTC 00:40 = 北京时间每天 08:40
-    - cron: '40 0 * * *'
+    # UTC 00:40、01:40 = 北京时间 08:40 首次签到、09:40 兜底检查
+    - cron: '40 0,1 * * *'
+
+concurrency:
+  group: glados-checkin
+  cancel-in-progress: false
 
 jobs:
   build:
